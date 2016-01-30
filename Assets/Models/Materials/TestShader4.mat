@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TestShader2
-  m_Shader: {fileID: 4800000, guid: 6dde8a279adb8ca4a8985abaae245659, type: 3}
-  m_ShaderKeywords: 
+  m_Name: TestShader4
+  m_Shader: {fileID: 4800000, guid: dc8a33a7542f84f4fb4528f8c1a78dc6, type: 3}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
   stringTagMap: {}
@@ -89,7 +89,7 @@ Material:
         first:
           name: _ShadeTex
         second:
-          m_Texture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
+          m_Texture: {fileID: 2800000, guid: 529239097d02f9f42b0ddd436c6fcbb0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -116,7 +116,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.642
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -140,7 +140,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.245
+        second: 0
     m_Colors:
       data:
         first:
@@ -149,4 +149,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.44852942, g: 0.44852942, b: 0.44852942, a: 1}
+        second: {r: 0.49264705, g: 0.12678418, b: 0.12678418, a: 1}
