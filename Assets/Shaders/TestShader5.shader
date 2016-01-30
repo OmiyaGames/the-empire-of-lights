@@ -3,8 +3,6 @@ Shader "Omiya Games/Test Shader 5"
 	Properties
 	{
 		//_Color("Blend Color", Color) = (1,1,1,1)
-		_Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
-		[Gamma] _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
 
 		_LightTex("Light", 2D) = "white" {}
 		_ShadeTex("Shade", 2D) = "white" {}
@@ -16,40 +14,37 @@ Shader "Omiya Games/Test Shader 5"
 	SubShader
 	{
 CGPROGRAM
-#include "UnityPBSLighting.cginc"
+//#include "UnityPBSLighting.cginc"
 #pragma surface surf ToonRamp
 		sampler2D _Ramp;
 		sampler2D _BumpMap;
-		half _Metallic;
-		half _Glossiness;
-		
+
 		struct Input
 		{
 			float2 uv_LightTex;
 			float2 uv_BumpMap;
 		};
 
-		float4 LightingToonRamp(SurfaceOutputStandard s, half3 lightDir, half atten)
+		// custom lighting function that uses a texture ramp based
+		// on angle between light direction and normal
+#pragma lighting ToonRamp exclude_path:prepass
+		inline half4 LightingToonRamp(SurfaceOutput s, half3 lightDir, half atten)
 		{
-			#ifndef USING_DIRECTIONAL_LIGHT
-				lightDir = normalize(lightDir);
-			#endif
+#ifndef USING_DIRECTIONAL_LIGHT
+			lightDir = normalize(lightDir);
+#endif
 
-			half d = dot (s.Normal, lightDir)*0.5 + 0.5;
-			half3 ramp = tex2D (_Ramp, float2(d,d)).rgb;
+			half d = dot(s.Normal, lightDir)*0.5 + 0.5;
+			half3 ramp = tex2D(_Ramp, float2(d, d)).rgb;
 
 			half4 c;
-			c.rgb = (s.Albedo * _LightColor0.rgb * ramp * (atten * 2));
+			c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
 			c.a = 0;
 			return c;
 		}
 
-		void surf(Input IN, inout SurfaceOutputStandard o)
+		void surf(Input IN, inout SurfaceOutput o)
 		{
-			// Set the Metallic & Glossiness
-			o.Metallic = _Metallic;
-			o.Smoothness = _Glossiness;
-
 			// Calculate the normal
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 
@@ -59,13 +54,12 @@ CGPROGRAM
 		}
 ENDCG
 
-	//save the white lighting out in a grab texture
-	GrabPass{ "_LightingGrab" }
+		//save the white lighting out in a grab texture
+		GrabPass{ "_LightingGrab" }
 
 CGPROGRAM
 #include "UnityPBSLighting.cginc"
 #pragma surface surf NoLighting vertex:vert
-//#pragma surface surf Standard vertex:vert
 		sampler2D _LightingGrab;
 
 		sampler2D _LightTex;
@@ -78,7 +72,7 @@ CGPROGRAM
 			float4 grabUV;
 		};
 
-		fixed4 LightingNoLighting(SurfaceOutputStandard s, fixed3 lightDir, fixed atten)
+		fixed4 LightingNoLighting(SurfaceOutput s, fixed3 lightDir, fixed atten)
 		{
 			fixed4 c;
 			c.rgb = s.Albedo;
@@ -96,13 +90,16 @@ CGPROGRAM
 #endif
 			o.uv_LightTex = v.texcoord;
 			o.uv_ShadeTex = v.texcoord;
+
 			o.grabUV.xy = (float2(projVert.x, projVert.y*scale) + projVert.w) * 0.5;
+			//o.grabUV.xy = float2(projVert.x, projVert.y * scale);
 			o.grabUV.zw = projVert.zw;
 		}
 
-		void surf(Input IN, inout SurfaceOutputStandard o)
+		void surf(Input IN, inout SurfaceOutput o)
 		{
 			half4 lightColor = tex2Dproj(_LightingGrab, UNITY_PROJ_COORD(IN.grabUV));
+			//half4 lightColor = half4(1, 1, 1, 1);
 			half4 mainColor = tex2D(_LightTex, IN.uv_LightTex);
 			half4 shadeColor = tex2D(_ShadeTex, IN.uv_ShadeTex);
 			o.Albedo = lerp(shadeColor, mainColor, lightColor);
