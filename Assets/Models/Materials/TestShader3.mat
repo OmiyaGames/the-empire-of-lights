@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TestShader2
-  m_Shader: {fileID: 4800000, guid: 3adec09eb2bbe3f4d98d00cc6acaad36, type: 3}
-  m_ShaderKeywords: 
+  m_Name: TestShader3
+  m_Shader: {fileID: 4800000, guid: 6dde8a279adb8ca4a8985abaae245659, type: 3}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
   stringTagMap: {}
@@ -116,7 +116,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.642
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -140,7 +140,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0.245
+        second: 0
     m_Colors:
       data:
         first:
