@@ -148,7 +148,11 @@ Material:
       data:
         first:
           name: _ShadeCutoff
-        second: 0.5
+        second: 0.6
+      data:
+        first:
+          name: _Ambience
+        second: 0.1
     m_Colors:
       data:
         first:
