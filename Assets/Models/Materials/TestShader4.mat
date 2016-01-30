@@ -141,6 +141,14 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _LightCutoff
+        second: 0.7
+      data:
+        first:
+          name: _ShadeCutoff
+        second: 0.5
     m_Colors:
       data:
         first:
