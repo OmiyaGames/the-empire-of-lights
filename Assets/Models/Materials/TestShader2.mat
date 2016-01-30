@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TestShader
-  m_Shader: {fileID: 4800000, guid: a0b44bcd999166048be47f56fe570710, type: 3}
+  m_Name: TestShader2
+  m_Shader: {fileID: 4800000, guid: 3adec09eb2bbe3f4d98d00cc6acaad36, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -89,7 +89,7 @@ Material:
         first:
           name: _ShadeTex
         second:
-          m_Texture: {fileID: 2800000, guid: 529239097d02f9f42b0ddd436c6fcbb0, type: 3}
+          m_Texture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
