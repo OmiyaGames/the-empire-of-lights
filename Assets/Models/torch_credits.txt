@@ -1,0 +1,4 @@
+Model "Torch" by jpsweber
+http://opengameart.org/content/torch
+
+Licensed under Public Domain

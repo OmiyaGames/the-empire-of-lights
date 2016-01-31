@@ -1,3 +1,4 @@
-Model "Simple Cottage"
+Model & Texture "Simple Cottage" by JamesWhite
 http://opengameart.org/content/simple-cottage
-JamesWhite
+
+Licensed under Public Domain
