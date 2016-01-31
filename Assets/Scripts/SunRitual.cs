@@ -8,6 +8,7 @@ public class SunRitual : MonoBehaviour
 {
     static SunRitual ritual;
 
+    [Header("Lights")]
     [SerializeField]
     Light directionalLight;
     [SerializeField]
@@ -19,7 +20,11 @@ public class SunRitual : MonoBehaviour
     [SerializeField]
     float MinimumX = -90F;
     [SerializeField]
-    float MaximumX = 90F;
+    float MaximumX = 90f;
+
+    [Header("Pop up")]
+    [SerializeField]
+    float popUpDuration = 2f;
 
     FirstPersonController controller;
     MenuManager menus;
@@ -27,6 +32,7 @@ public class SunRitual : MonoBehaviour
     SunMenu sunMenu;
     Vector3 lightRotationEular;
     bool allowMoving = true;
+    WaitForSeconds waitForPopUp;
 
     public static SunRitual Instance
     {
@@ -48,6 +54,7 @@ public class SunRitual : MonoBehaviour
     void Start ()
     {
         ritual = this;
+        waitForPopUp = new WaitForSeconds(popUpDuration);
         controller = GetComponent<FirstPersonController>();
         menus = Singleton.Get<MenuManager>();
         pauseMenu = menus.GetMenu<PauseMenu>();
@@ -118,5 +125,24 @@ public class SunRitual : MonoBehaviour
         q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
 
         return q;
+    }
+
+    public void OnCoinCollectionChanged(CoinCollection collection)
+    {
+        if(collection.NumCoins > 0)
+        {
+            StartCoroutine(PopUp(collection.NumCoins, collection.MaxCoins));
+        }
+        else
+        {
+            menus.Show<LevelCompleteMenu>();
+        }
+    }
+
+    System.Collections.IEnumerator PopUp(int numCoins, int maxCoins)
+    {
+        ulong id = menus.PopUps.ShowNewDialog("You found " + numCoins + " coins out of " + maxCoins);
+        yield return waitForPopUp;
+        menus.PopUps.RemoveDialog(id);
     }
 }
