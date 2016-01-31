@@ -1,0 +1,4 @@
+Model & texture modified from "Car VW Corradon" by rohezal
+http://opengameart.org/content/car-vw-corradon
+
+Licensed under Public Domain.
