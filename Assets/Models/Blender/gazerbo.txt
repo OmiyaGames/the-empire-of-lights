@@ -1,0 +1,4 @@
+Model modified from "Gazebo" by Teh_Bucket
+http://opengameart.org/content/gazebo-0
+
+Licensed under Public Domain.

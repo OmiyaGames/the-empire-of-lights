@@ -1,0 +1,4 @@
+Model & texture modified from "free 3d-platformer houses" by rubberduck
+http://opengameart.org/content/free-3d-platformer-houses
+
+Licensed under Public Domain.
