@@ -1,0 +1,4 @@
+Model & texture modified from "free 3D-platformer-art-pack-2 - fences" by rubberduck
+http://opengameart.org/content/free-3d-platformer-art-pack-2-fences
+
+Licensed under Public Domain.
