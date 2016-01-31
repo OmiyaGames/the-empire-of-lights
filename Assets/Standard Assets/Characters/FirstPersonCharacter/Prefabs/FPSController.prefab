@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11422582}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 20: {fileID: 2000000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11494488}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -301,6 +301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 0}
+  changeLightKey: 101
+  XSensitivity: 2
+  YSensitivity: 2
+  MinimumX: -90
+  MaximumX: 90
 --- !u!114 &11494488
 MonoBehaviour:
   m_ObjectHideFlags: 1
