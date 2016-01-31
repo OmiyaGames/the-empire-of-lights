@@ -1,0 +1,4 @@
+Model & texture modified from "Rocks" by yughues
+http://opengameart.org/content/rocks-0
+
+Licensed under Public Domain.
