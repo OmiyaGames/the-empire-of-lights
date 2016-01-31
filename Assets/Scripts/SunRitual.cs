@@ -29,11 +29,11 @@ public class SunRitual : MonoBehaviour
     FirstPersonController controller;
     MenuManager menus;
     PauseMenu pauseMenu;
+    LevelCompleteMenu levelCompleteMenu;
     SunMenu sunMenu;
     Vector3 lightRotationEular;
     bool allowMoving = true;
     WaitForSeconds waitForPopUp;
-
     public static SunRitual Instance
     {
         get
@@ -59,13 +59,14 @@ public class SunRitual : MonoBehaviour
         menus = Singleton.Get<MenuManager>();
         pauseMenu = menus.GetMenu<PauseMenu>();
         sunMenu = menus.GetMenu<SunMenu>();
+        levelCompleteMenu = menus.GetMenu<LevelCompleteMenu>();
     }
 
     // Update is called once per frame
     void Update ()
     {
         allowMoving = false;
-        if (pauseMenu.CurrentState == IMenu.State.Hidden)
+        if ((pauseMenu.CurrentState == IMenu.State.Hidden) && (levelCompleteMenu.CurrentState == IMenu.State.Hidden))
         {
             if(Input.GetKey(changeLightKey) == true)
             {
@@ -94,7 +95,7 @@ public class SunRitual : MonoBehaviour
         lightRotationEular.x = ClampedAngle(lightRotationEular.x - xRot);
         lightRotationEular.y += yRot;
 
-        LightRotation.rotation = ClampRotationAroundXAxis(Quaternion.Euler(lightRotationEular));
+        LightRotation.rotation = Quaternion.Euler(lightRotationEular);
     }
 
     float ClampedAngle(float angle)
@@ -111,22 +112,6 @@ public class SunRitual : MonoBehaviour
         return Mathf.Clamp(angle, MinimumX, MaximumX);
     }
 
-    Quaternion ClampRotationAroundXAxis(Quaternion q)
-    {
-        q.x /= q.w;
-        q.y /= q.w;
-        q.z /= q.w;
-        q.w = 1.0f;
-
-        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
-
-        angleX = Mathf.Clamp(angleX, MinimumX, MaximumX);
-
-        q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
-
-        return q;
-    }
-
     public void OnCoinCollectionChanged(CoinCollection collection)
     {
         if(collection.NumCoins > 0)
@@ -135,13 +120,13 @@ public class SunRitual : MonoBehaviour
         }
         else
         {
-            menus.Show<LevelCompleteMenu>();
+            levelCompleteMenu.Show();
         }
     }
 
     System.Collections.IEnumerator PopUp(int numCoins, int maxCoins)
     {
-        ulong id = menus.PopUps.ShowNewDialog("You found " + numCoins + " coins out of " + maxCoins);
+        ulong id = menus.PopUps.ShowNewDialog("You found " + (maxCoins - numCoins) + " coins out of " + maxCoins);
         yield return waitForPopUp;
         menus.PopUps.RemoveDialog(id);
     }

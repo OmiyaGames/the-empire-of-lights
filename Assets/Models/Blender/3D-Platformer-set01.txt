@@ -1,0 +1,4 @@
+Model & texture modified from "free 3D-Platformer-art-pack-1" by rubberduck
+http://opengameart.org/content/free-3d-platformer-art-pack-1
+
+Licensed under Public Domain.
