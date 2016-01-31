@@ -6,6 +6,8 @@ using OmiyaGames;
 [RequireComponent(typeof(FirstPersonController))]
 public class SunRitual : MonoBehaviour
 {
+    static SunRitual ritual;
+
     [SerializeField]
     Light directionalLight;
     [SerializeField]
@@ -22,16 +24,35 @@ public class SunRitual : MonoBehaviour
     FirstPersonController controller;
     MenuManager menus;
     PauseMenu pauseMenu;
+    SunMenu sunMenu;
     Quaternion lightRotation;
     bool allowMoving = true;
+
+    public static SunRitual Instance
+    {
+        get
+        {
+            return ritual;
+        }
+    }
+
+    public Transform LightRotation
+    {
+        get
+        {
+            return directionalLight.transform;
+        }
+    }
 
     // Use this for initialization
     void Start ()
     {
-        lightRotation = directionalLight.transform.rotation;
+        ritual = this;
+        lightRotation = LightRotation.rotation;
         controller = GetComponent<FirstPersonController>();
         menus = Singleton.Get<MenuManager>();
         pauseMenu = menus.GetMenu<PauseMenu>();
+        sunMenu = menus.GetMenu<SunMenu>();
     }
 
     // Update is called once per frame
@@ -42,12 +63,18 @@ public class SunRitual : MonoBehaviour
         {
             if(Input.GetKey(changeLightKey) == true)
             {
+                sunMenu.Show();
                 RotateSun();
             }
             else
             {
+                sunMenu.Hide();
                 allowMoving = true;
             }
+        }
+        else
+        {
+            sunMenu.Hide();
         }
         controller.CanMove = allowMoving;
     }
@@ -62,7 +89,7 @@ public class SunRitual : MonoBehaviour
 
         lightRotation = ClampRotationAroundXAxis(lightRotation);
 
-        directionalLight.transform.rotation = lightRotation;
+        LightRotation.rotation = lightRotation;
     }
 
     Quaternion ClampRotationAroundXAxis(Quaternion q)
