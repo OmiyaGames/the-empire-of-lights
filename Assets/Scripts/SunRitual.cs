@@ -92,8 +92,8 @@ public class SunRitual : MonoBehaviour
         float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
         lightRotationEular = LightRotation.rotation.eulerAngles;
-        lightRotationEular.x = ClampedAngle(lightRotationEular.x - xRot);
-        lightRotationEular.y += yRot;
+        lightRotationEular.x = ClampedAngle(lightRotationEular.x + xRot);
+        lightRotationEular.y -= yRot;
 
         LightRotation.rotation = Quaternion.Euler(lightRotationEular);
     }
