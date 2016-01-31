@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Material.TF.514_portablelights.png
+  m_Name: GrassMaterial
   m_Shader: {fileID: 4800000, guid: dc8a33a7542f84f4fb4528f8c1a78dc6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 592ab5c6f64c01346aa243de61683a32, type: 3}
+          m_Texture: {fileID: 2800000, guid: c29d9229eb3067d4b9e31643ab3d55dd, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 531c36b69d9fe9f49b680daedb3b7eeb, type: 3}
+          m_Texture: {fileID: 2800000, guid: f8e9bc59271dde84d853e38b8232f6cc, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -89,15 +89,15 @@ Material:
         first:
           name: _ShadeTex
         second:
-          m_Texture: {fileID: 2800000, guid: 5ee6882e1ab2f5c479c0671a26fc864c, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: 70c69fc702fd07a43940de4c4fea732a, type: 3}
+          m_Scale: {x: 0.5, y: 0.5}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _LightTex
         second:
-          m_Texture: {fileID: 2800000, guid: 592ab5c6f64c01346aa243de61683a32, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Texture: {fileID: 2800000, guid: c29d9229eb3067d4b9e31643ab3d55dd, type: 3}
+          m_Scale: {x: 0.5, y: 0.5}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
@@ -168,4 +168,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.64, g: 0.64, b: 0.64, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
