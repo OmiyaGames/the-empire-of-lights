@@ -25,7 +25,7 @@ public class SunRitual : MonoBehaviour
     MenuManager menus;
     PauseMenu pauseMenu;
     SunMenu sunMenu;
-    Quaternion lightRotation;
+    //Quaternion lightRotation;
     bool allowMoving = true;
 
     public static SunRitual Instance
@@ -48,7 +48,7 @@ public class SunRitual : MonoBehaviour
     void Start ()
     {
         ritual = this;
-        lightRotation = LightRotation.rotation;
+        //lightRotation = LightRotation.rotation;
         controller = GetComponent<FirstPersonController>();
         menus = Singleton.Get<MenuManager>();
         pauseMenu = menus.GetMenu<PauseMenu>();
@@ -84,12 +84,8 @@ public class SunRitual : MonoBehaviour
         float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
         float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
-        lightRotation *= Quaternion.Euler(0f, yRot, 0f);
-        lightRotation *= Quaternion.Euler(-xRot, 0f, 0f);
-
-        lightRotation = ClampRotationAroundXAxis(lightRotation);
-
-        LightRotation.rotation = lightRotation;
+        LightRotation.Rotate(yRot, -xRot, 0f);
+        LightRotation.rotation = ClampRotationAroundXAxis(LightRotation.rotation);
     }
 
     Quaternion ClampRotationAroundXAxis(Quaternion q)
