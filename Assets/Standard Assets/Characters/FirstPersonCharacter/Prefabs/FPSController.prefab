@@ -128,7 +128,7 @@ Camera:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -295,7 +295,7 @@ Light:
   m_Color: {r: 0.86764705, g: 0.8479358, b: 0.68901384, a: 1}
   m_Intensity: 1
   m_Range: 50
-  m_SpotAngle: 60
+  m_SpotAngle: 80
   m_CookieSize: 1
   m_Shadows:
     m_Type: 2
