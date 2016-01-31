@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Cottage
-  m_Shader: {fileID: 4800000, guid: ce7b026e450b9db4bb144adb4410f6ee, type: 3}
+  m_Shader: {fileID: 4800000, guid: dc8a33a7542f84f4fb4528f8c1a78dc6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 2000
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 0d9305962c440014698f701ad4aec677, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -148,6 +148,18 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _LightCutoff
+        second: 0.7
+      data:
+        first:
+          name: _ShadeCutoff
+        second: 0.6
+      data:
+        first:
+          name: _Ambience
+        second: 0.1
     m_Colors:
       data:
         first:
