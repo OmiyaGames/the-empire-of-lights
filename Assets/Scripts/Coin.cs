@@ -49,7 +49,7 @@ public class Coin : MonoBehaviour
         if((isTriggered == false) && (Collection != null))
         {
             graphics.SetActive(false);
-            fireworks.Play();
+            //fireworks.Play();
             Collection.RemoveCoin(this);
             isTriggered = true;
             sound.Play();

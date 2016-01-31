@@ -2,11 +2,10 @@ Shader "Omiya Games/Test Shader 4"
 {
 	Properties
 	{
-		_Color("Main Color", Color) = (1,1,1,1)
 		[NoScaleOffset] _MainTex("Light (RGB)", 2D) = "white" {}
 		[NoScaleOffset] _ShadeTex("Shade (RGB)", 2D) = "black" {}
-		_LightCutoff("Light Cutoff", Range(0.0, 1.0)) = 0.9
-		_ShadeCutoff("Shade Cutoff", Range(0.0, 1.0)) = 0.1
+		_LightCutoff("Light Cutoff", Range(0.0, 1.0)) = 0.7
+		_ShadeCutoff("Shade Cutoff", Range(0.0, 1.0)) = 0.6
 		_Ambience("Ambience Strength", Range(0.0, 1.0)) = 0.1
 	}
 
